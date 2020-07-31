@@ -1,7 +1,3 @@
-// const map = require("awaity/map");
-
-// const { each } = require("awaity/esm");
-
 const { getExercises } = require("../db/utils.js");
 const { createRepo } = require("./utils/createRepo.js");
 
