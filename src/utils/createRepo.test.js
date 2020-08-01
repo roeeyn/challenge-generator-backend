@@ -1,7 +1,7 @@
 const { parseStarterFn, parseTests } = require("./createRepo.js");
 
 describe("Testing repo creation tools", () => {
-  test("Parsing starter function", () => {
+  xtest("Parsing starter function", () => {
     const starterFnDemo = ["1\nfunction addition(a, b) {", "2\n  ", "3\n}"];
     const { starterCode, fnNames } = parseStarterFn(starterFnDemo);
     expect(starterCode).toBe(
@@ -10,7 +10,7 @@ describe("Testing repo creation tools", () => {
     expect(fnNames).toStrictEqual(["addition"]);
   });
 
-  test("Parsing imports statements", () => {
+  xtest("Parsing imports statements", () => {
     const parsedTests = parseTests([], ["fn1", "fn2"], 69);
     expect(parsedTests).toBe(
       `const { fn1, fn2 } = require("./challenge70.js");\n\n`
