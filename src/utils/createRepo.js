@@ -26,7 +26,10 @@ module.exports.parseTests = (tests, fnNames, challengeNumber) => {
     ", "
   )} } = require("./challenge${challengeNumber + 1}.js");`;
   const parsedTests = tests.join("\n");
-  return `${importStatements}\n\n${parsedTests}`;
+  const message1 = `/////////// THIS ARE THE ORIGINAL TESTS, THEY WONT RUN WITH JEST //////////////\n`;
+  const message2 = `///// you have to modify them manually now, but we're working on a parser /////\n`;
+  const message3 = `///// you may see the progress in the repo of this project ////////////////////\n`;
+  return `${importStatements}\n\n${message1}${message2}${message3}${parsedTests}`;
 };
 
 module.exports.createRepo = (exercise, challengeNumber, rootFolder) => {
