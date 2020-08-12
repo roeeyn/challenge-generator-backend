@@ -20,8 +20,6 @@ const html2md = (html, challengeNumber) => {
 module.exports.parseStarterFn = starterFn => {
   const expression = / .*\(.*\)/;
   const functions = starterFn.join("").match(expression);
-  console.log("*********************");
-  console.log(functions);
   const fnSignature = functions.map(fn => fn.split("("));
   const starterCode = fnSignature
     .map(
@@ -61,7 +59,6 @@ module.exports.parseTests = (tests, fnNames, challengeNumber) => {
 };
 
 module.exports.createRepo = (exercise, challengeNumber, rootFolder) => {
-  console.log("Generating exercise: ", exercise.url);
   const readmeFile = html2md(exercise.description, challengeNumber);
 
   const {

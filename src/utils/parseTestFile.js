@@ -15,7 +15,7 @@ module.exports.parseTest = originalTestLine => testExpression => jestTestVerb =>
     .split(",");
 
   if (funcExec && expectedResult) {
-    const jestTest = `test("TESTING main fun", () => expect(${funcExec.trim()}).${jestTestVerb}(${expectedResult.trim()}));`;
+    const jestTest = `test("TESTING main fun", () => expect(${funcExec.trim()}).${jestTestVerb}(${expectedResult.trim()});`;
     return originalTestLine.replace(originalTest, jestTest);
   }
 
@@ -59,7 +59,7 @@ module.exports.parseExpectError = originalTestLine => {
     .split(",");
 
   if (funcExec && expectedResult) {
-    const jestTest = `test("TESTING main fun", () => expect(${funcExec.trim()}).toThrow}(${expectedResult.trim()}));`;
+    const jestTest = `test("TESTING main fun", () => expect(${funcExec.trim()}).toThrow}(${expectedResult.trim()});`;
     return originalTestLine.replace(originalTest, jestTest);
   }
 
@@ -85,7 +85,7 @@ module.exports.parseExpectNoError = originalTestLine => {
     .split(",");
 
   if (funcExec && expectedResult) {
-    const jestTest = `test("TESTING main fun", () => expect(${funcExec.trim()}).not.toThrow}(${expectedResult.trim()}));`;
+    const jestTest = `test("TESTING main fun", () => expect(${funcExec.trim()}).not.toThrow}(${expectedResult.trim()});`;
     return originalTestLine.replace(originalTest, jestTest);
   }
 
