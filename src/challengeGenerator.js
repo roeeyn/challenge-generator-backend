@@ -32,7 +32,7 @@ module.exports.main = async (request, response) => {
 
     return response.send({ files: exercisesFiles });
   } catch (error) {
-    console.log(error);
+    console.log(error.message);
     return response.send({
       error: {
         message: error,
