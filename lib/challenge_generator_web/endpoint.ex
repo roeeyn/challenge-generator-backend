@@ -7,7 +7,7 @@ defmodule ChallengeGeneratorWeb.Endpoint do
   @session_options [
     store: :cookie,
     key: "_challenge_generator_key",
-    signing_salt: "GT/6gFP0"
+    signing_salt: "2+zOrz1X"
   ]
 
   socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]
@@ -25,6 +25,8 @@ defmodule ChallengeGeneratorWeb.Endpoint do
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
   if code_reloading? do
+    socket "/phoenix/live_reload/socket", Phoenix.LiveReloader.Socket
+    plug Phoenix.LiveReloader
     plug Phoenix.CodeReloader
   end
 
