@@ -18,6 +18,14 @@ defmodule ChallengeGeneratorWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/docs", PageController, :docs
+    get "/docs/api", PageController, :docs_api
+  end
+
+  scope "/api", ChallengeGeneratorWeb do
+    pipe_through :api
+
+    get "/", ApiController, :index
   end
 
   # Other scopes may use custom stacks.

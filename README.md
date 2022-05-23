@@ -4,8 +4,8 @@
 The idea is to have 3 endpoints:
 1. `/` as a landing page
 2. `/docs` for Elixir documentation about the modules
-3. `/api` for API documentation (maybe swagger?)
-4. `/api/challenges` for the API itself
+3. `/docs/api` for API documentation (maybe swagger?)
+4. `/api` for the API itself
 
 To start your Phoenix server:
 
