@@ -48,3 +48,21 @@ if config_env() == :prod do
     ],
     secret_key_base: secret_key_base
 end
+
+# Mongo Configuration
+if config_env() == :dev do
+  config :mongodb_driver, log: true
+end
+
+config :challenge_generator, ChallengeGenerator.Repo,
+  url: System.get_env("MONGO_URL") || "mongodb://localhost:27017",
+  timeout: 60_000,
+  database: System.get_env("MONGO_DB") || "my_local_db",
+  idle_interval: 10_000,
+  queue_target: 5_000,
+  pool_size: 3,
+  # This should be enabled only in a dev environment
+  show_sensitive_data_on_connection_error: config_env() != :prod,
+  username: System.get_env("MONGO_USER") || "root",
+  password: System.get_env("MONGO_PASSWORD") || "root",
+  auth_source: System.get_env("MONGO_AUTH_SOURCE") || "admin"
