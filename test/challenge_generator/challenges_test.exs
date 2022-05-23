@@ -36,7 +36,9 @@ defmodule ChallengeGenerator.ChallengesTest do
       challenge = challenge_fixture()
       update_attrs = %{author: "some updated author", title: "some updated title"}
 
-      assert {:ok, %Challenge{} = challenge} = Challenges.update_challenge(challenge, update_attrs)
+      assert {:ok, %Challenge{} = challenge} =
+               Challenges.update_challenge(challenge, update_attrs)
+
       assert challenge.author == "some updated author"
       assert challenge.title == "some updated title"
     end

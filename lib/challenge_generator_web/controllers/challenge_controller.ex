@@ -32,7 +32,8 @@ defmodule ChallengeGeneratorWeb.ChallengeController do
   def update(conn, %{"id" => id, "challenge" => challenge_params}) do
     challenge = Challenges.get_challenge!(id)
 
-    with {:ok, %Challenge{} = challenge} <- Challenges.update_challenge(challenge, challenge_params) do
+    with {:ok, %Challenge{} = challenge} <-
+           Challenges.update_challenge(challenge, challenge_params) do
       render(conn, "show.json", challenge: challenge)
     end
   end

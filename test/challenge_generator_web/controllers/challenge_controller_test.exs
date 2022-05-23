@@ -49,7 +49,10 @@ defmodule ChallengeGeneratorWeb.ChallengeControllerTest do
   describe "update challenge" do
     setup [:create_challenge]
 
-    test "renders challenge when data is valid", %{conn: conn, challenge: %Challenge{id: id} = challenge} do
+    test "renders challenge when data is valid", %{
+      conn: conn,
+      challenge: %Challenge{id: id} = challenge
+    } do
       conn = put(conn, Routes.challenge_path(conn, :update, challenge), challenge: @update_attrs)
       assert %{"id" => ^id} = json_response(conn, 200)["data"]
 

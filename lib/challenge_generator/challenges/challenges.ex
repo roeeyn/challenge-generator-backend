@@ -3,7 +3,6 @@ defmodule ChallengeGenerator.Challenges do
   The Challenges context.
   """
 
-
   alias ChallengeGenerator.Challenges.Challenge
 
   @doc """
@@ -30,7 +29,11 @@ defmodule ChallengeGenerator.Challenges do
       %Challenge{}
 
   """
-  def get_challenge!(id), do: raise "TODO"
+  @spec get_challenge!(binary) :: Challenge.t()
+  def get_challenge!(id) do
+    {:ok, challenge} = Challenge.get_by_id(id)
+    challenge
+  end
 
   @doc """
   Creates a challenge.

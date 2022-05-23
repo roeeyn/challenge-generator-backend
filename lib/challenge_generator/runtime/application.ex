@@ -13,9 +13,10 @@ defmodule ChallengeGenerator.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: ChallengeGenerator.PubSub},
       # Start the Endpoint (http/https)
-      ChallengeGeneratorWeb.Endpoint
+      ChallengeGeneratorWeb.Endpoint,
       # Start a worker by calling: ChallengeGenerator.Worker.start_link(arg)
       # {ChallengeGenerator.Worker, arg}
+      {Mongo, ChallengeGenerator.Repo.config()}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
