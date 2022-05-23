@@ -25,7 +25,8 @@ defmodule ChallengeGeneratorWeb.Router do
   scope "/api", ChallengeGeneratorWeb do
     pipe_through :api
 
-    # get "/", ApiController, :index
+   get "/", ChallengeController, :redirect_to_docs
+   resources "/challenges", ChallengeController, except: [:new, :edit]
   end
 
   # Other scopes may use custom stacks.
