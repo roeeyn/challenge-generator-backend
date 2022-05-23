@@ -25,7 +25,7 @@ defmodule ChallengeGeneratorWeb.Router do
   scope "/api", ChallengeGeneratorWeb do
     pipe_through :api
 
-    get "/", ApiController, :index
+    # get "/", ApiController, :index
   end
 
   # Other scopes may use custom stacks.
