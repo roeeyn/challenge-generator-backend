@@ -49,4 +49,16 @@ defmodule ChallengeGenerator.Challenges.Challenge do
 
     {:ok, challenge}
   end
+
+  def get_random_challenge() do
+    # TODO: add attributes for filtering
+    Logger.debug("Getting random challenge by attrs")
+
+    [challenge | _] =
+      :mongo
+      |> Mongo.aggregate(@collection, [%{"$sample" => %{"size" => 1}}])
+      |> Enum.to_list()
+
+    {:ok, challenge}
+  end
 end
