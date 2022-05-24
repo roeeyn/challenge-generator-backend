@@ -7,6 +7,9 @@ The idea is to have 3 endpoints:
 3. `/docs/api` for API documentation (maybe swagger?)
 4. `/api` for the API itself
 
+Difficulty from 0 to 5
+Programming languages: [java, javascript, python3]
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`

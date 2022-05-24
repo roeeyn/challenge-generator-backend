@@ -29,9 +29,9 @@ defmodule ChallengeGenerator.Challenges do
       %Challenge{}
 
   """
-  @spec get_challenge!(binary) :: Challenge.t()
-  def get_challenge!(id) do
-    {:ok, challenge} = Challenge.get_by_id(id)
+  @spec get_challenge!(binary | map) :: Challenge.t()
+  def get_challenge!(param) do
+    {:ok, challenge} = Challenge.get_challenge(param)
     challenge
   end
 

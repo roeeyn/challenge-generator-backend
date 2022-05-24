@@ -1,5 +1,6 @@
 defmodule ChallengeGenerator.Challenges.Challenge do
   use Mongo.Collection
+  require Logger
 
   alias ChallengeGenerator.Challenges.Challenge
 
@@ -21,8 +22,10 @@ defmodule ChallengeGenerator.Challenges.Challenge do
     attribute(:title, String.t())
   end
 
-  @spec get_by_id(binary) :: {:ok, Challenge.t()} | {:error, binary}
-  def get_by_id(id) do
+  @spec get_challenge(binary) :: {:ok, Challenge.t()}
+  def get_challenge(id) when is_binary(id) do
+    Logger.debug("Getting challenge by ID:" <> id)
+
     with {:ok, object_id} <- BSON.ObjectId.decode(id) do
       challenge =
         :mongo
@@ -31,7 +34,19 @@ defmodule ChallengeGenerator.Challenges.Challenge do
 
       {:ok, challenge}
     else
-      _ -> {:error, "Invalid ID"}
+      _ -> {:ok, nil}
     end
+  end
+
+  @spec get_challenge(map) :: {:ok, Challenge.t()}
+  def get_challenge(challenge_attrs) do
+    Logger.debug("Getting challenge by attrs:" <> inspect(challenge_attrs))
+
+    challenge =
+      :mongo
+      |> Mongo.find_one(@collection, challenge_attrs)
+      |> load()
+
+    {:ok, challenge}
   end
 end
