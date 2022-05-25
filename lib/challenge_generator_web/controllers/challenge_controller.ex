@@ -10,9 +10,9 @@ defmodule ChallengeGeneratorWeb.ChallengeController do
     redirect(conn, to: Routes.page_path(conn, :docs_api))
   end
 
-  def index(conn, _params) do
-    challenges = Challenges.list_challenges()
-    render(conn, "index.json", challenges: challenges)
+  def index(conn, params) do
+    challenge = Challenges.random_challenge(params)
+    render(conn, "show.json", challenge: challenge)
   end
 
   def create(conn, %{"challenge" => challenge_params}) do

@@ -2,9 +2,9 @@ defmodule ChallengeGenerator.Challenges.ChallengeAttrsQuery do
   alias ChallengeGenerator.Challenges.ChallengeAttrsQuery
 
   @type t :: %ChallengeAttrsQuery{
-          title: binary,
+          title: BSON.Regex.t(),
           edabit_id: binary,
-          author: binary,
+          author: BSON.Regex.t(),
           author_edabit_id: binary,
           min_difficulty: float,
           programming_language: binary,
@@ -33,17 +33,48 @@ defmodule ChallengeGenerator.Challenges.ChallengeAttrsQuery do
     :tags
   ]
 
+  @spec parse!(nil) :: nil
+  defp parse!(nil), do: nil
+
+  @spec parse!(binary) :: float
+  defp parse!(string) do
+    {value, _} = Float.parse(string)
+    value
+  end
+
+  @spec regex_encode!(nil) :: nil
+  defp regex_encode!(nil), do: nil
+
+  @spec regex_encode!(binary) :: BSON.Regex.t()
+  defp regex_encode!(string) do
+    %BSON.Regex{
+      pattern: string
+    }
+  end
+
+  @spec list_decode!(nil) :: nil
+  defp list_decode!(nil), do: nil
+
+  @spec list_decode!(binary) :: list(binary)
+  defp list_decode!(string) do
+    with {:ok, tags} <- Jason.decode(string) do
+      tags
+    else
+      _ -> nil
+    end
+  end
+
   @spec create_query_from_map(map) :: ChallengeAttrsQuery.t()
   def create_query_from_map(attrs_map) do
     %ChallengeAttrsQuery{
-      :title => attrs_map["title"] || nil,
+      :title => regex_encode!(attrs_map["title"]) || nil,
       :edabit_id => attrs_map["edabit_id"] || nil,
-      :author => attrs_map["author"] || nil,
+      :author => regex_encode!(attrs_map["author"]) || nil,
       :author_edabit_id => attrs_map["author_edabit_id"] || nil,
-      :min_difficulty => attrs_map["min_difficulty"] || nil,
+      :min_difficulty => parse!(attrs_map["min_difficulty"]) || nil,
       :programming_language => attrs_map["programming_language"] || nil,
-      :min_quality => attrs_map["min_quality"] || nil,
-      :tags => attrs_map["tags"] || nil
+      :min_quality => parse!(attrs_map["min_quality"]) || nil,
+      :tags => list_decode!(attrs_map["tags"]) || nil
     }
   end
 
@@ -91,7 +122,7 @@ defmodule ChallengeGenerator.Challenges.ChallengeAttrsQuery do
       |> Atom.to_string()
 
     %{
-      "#{new_key}" => "#{value}"
+      "#{new_key}" => value
     }
   end
 end

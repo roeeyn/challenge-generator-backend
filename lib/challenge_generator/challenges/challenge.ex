@@ -59,13 +59,16 @@ defmodule ChallengeGenerator.Challenges.Challenge do
       ChallengeAttrsQuery.create_query_from_map(attrs)
       |> ChallengeAttrsQuery.create_match_map()
 
-    [challenge | _] =
+    challenge =
       :mongo
       |> Mongo.aggregate(@collection, [
         %{"$match" => match_map},
         %{"$sample" => %{"size" => 1}}
       ])
       |> Enum.to_list()
+      # As we're only having a sample with one element
+      |> Enum.at(0)
+      |> load()
 
     {:ok, challenge}
   end

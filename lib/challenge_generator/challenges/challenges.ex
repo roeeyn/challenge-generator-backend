@@ -6,16 +6,18 @@ defmodule ChallengeGenerator.Challenges do
   alias ChallengeGenerator.Challenges.Challenge
 
   @doc """
-  Returns the list of challenges.
+  Returns a random challenge
 
   ## Examples
 
-      iex> list_challenges()
-      [%Challenge{}, ...]
+      iex> random_challenge()
+      %Challenge{}
 
   """
-  def list_challenges do
-    raise "TODO"
+  @spec random_challenge(map) :: Challenge.t()
+  def random_challenge(param) do
+    {:ok, challenge} = Challenge.get_random_challenge(param)
+    challenge
   end
 
   @doc """
