@@ -1,4 +1,4 @@
-# ChallengeGenerator
+# Challenge Generator Backend
 
 ## Notes
 The idea is to have 3 endpoints:
