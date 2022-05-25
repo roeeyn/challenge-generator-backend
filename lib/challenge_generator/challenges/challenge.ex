@@ -3,6 +3,7 @@ defmodule ChallengeGenerator.Challenges.Challenge do
   require Logger
 
   alias ChallengeGenerator.Challenges.Challenge
+  alias ChallengeGenerator.Challenges.ChallengeAttrsQuery
 
   # only to suppress warnings
   @collection nil
@@ -50,13 +51,20 @@ defmodule ChallengeGenerator.Challenges.Challenge do
     {:ok, challenge}
   end
 
-  def get_random_challenge() do
-    # TODO: add attributes for filtering
+  @spec get_random_challenge(map) :: {:ok, Challenge.t()}
+  def get_random_challenge(attrs \\ %{}) do
     Logger.debug("Getting random challenge by attrs")
+
+    match_map =
+      ChallengeAttrsQuery.create_query_from_map(attrs)
+      |> ChallengeAttrsQuery.create_match_map()
 
     [challenge | _] =
       :mongo
-      |> Mongo.aggregate(@collection, [%{"$sample" => %{"size" => 1}}])
+      |> Mongo.aggregate(@collection, [
+        %{"$match" => match_map},
+        %{"$sample" => %{"size" => 1}}
+      ])
       |> Enum.to_list()
 
     {:ok, challenge}
