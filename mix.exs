@@ -10,7 +10,25 @@ defmodule ChallengeGenerator.MixProject do
       compilers: Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+
+      # Docs
+      name: "Challenge Generator",
+      source_url: "https://github.com/roeeyn/challenge-generator-backend",
+      docs: [
+        authors: ["roeeyn"],
+        groups_for_modules: [
+          "Lib Logic": [
+            ChallengeGenerator,
+            ChallengeGenerator.Challenges,
+            ChallengeGenerator.Challenges.Challenge,
+            ChallengeGenerator.Challenges.ChallengeAttrsQuery
+          ],
+          "Web Interface": [ChallengeGeneratorWeb]
+        ],
+        nested_groups: [ChallengeGenerator, ChallengeGeneratorWeb],
+        extras: ["README.md"]
+      ]
     ]
   end
 
@@ -45,7 +63,7 @@ defmodule ChallengeGenerator.MixProject do
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
       {:mongodb_driver, "~> 0.9.0"},
-      {:ex_doc, "~> 0.21", only: :dev, runtime: false},
+      {:ex_doc, "~> 0.21", only: :dev, runtime: false}
     ]
   end
 

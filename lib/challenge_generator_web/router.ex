@@ -1,4 +1,5 @@
 defmodule ChallengeGeneratorWeb.Router do
+  @moduledoc false
   use ChallengeGeneratorWeb, :router
 
   pipeline :browser do

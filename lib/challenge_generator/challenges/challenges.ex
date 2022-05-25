@@ -37,63 +37,22 @@ defmodule ChallengeGenerator.Challenges do
     challenge
   end
 
-  @doc """
-  Creates a challenge.
-
-  ## Examples
-
-      iex> create_challenge(%{field: value})
-      {:ok, %Challenge{}}
-
-      iex> create_challenge(%{field: bad_value})
-      {:error, ...}
-
-  """
+  @doc false
   def create_challenge(attrs \\ %{}) do
     raise "TODO"
   end
 
-  @doc """
-  Updates a challenge.
-
-  ## Examples
-
-      iex> update_challenge(challenge, %{field: new_value})
-      {:ok, %Challenge{}}
-
-      iex> update_challenge(challenge, %{field: bad_value})
-      {:error, ...}
-
-  """
+  @doc false
   def update_challenge(%Challenge{} = challenge, attrs) do
     raise "TODO"
   end
 
-  @doc """
-  Deletes a Challenge.
-
-  ## Examples
-
-      iex> delete_challenge(challenge)
-      {:ok, %Challenge{}}
-
-      iex> delete_challenge(challenge)
-      {:error, ...}
-
-  """
+  @doc false
   def delete_challenge(%Challenge{} = challenge) do
     raise "TODO"
   end
 
-  @doc """
-  Returns a data structure for tracking challenge changes.
-
-  ## Examples
-
-      iex> change_challenge(challenge)
-      %Todo{...}
-
-  """
+  @doc false
   def change_challenge(%Challenge{} = challenge, _attrs \\ %{}) do
     raise "TODO"
   end

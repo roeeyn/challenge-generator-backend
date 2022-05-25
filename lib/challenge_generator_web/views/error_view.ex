@@ -1,4 +1,5 @@
 defmodule ChallengeGeneratorWeb.ErrorView do
+  @moduledoc false
   use ChallengeGeneratorWeb, :view
 
   # If you want to customize a particular status code

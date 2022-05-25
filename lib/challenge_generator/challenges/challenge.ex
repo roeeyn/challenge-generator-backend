@@ -1,4 +1,7 @@
 defmodule ChallengeGenerator.Challenges.Challenge do
+  @moduledoc """
+  This module defines the Challenge collection and struct.
+  """
   use Mongo.Collection
   require Logger
 
@@ -23,6 +26,12 @@ defmodule ChallengeGenerator.Challenges.Challenge do
     attribute(:title, String.t())
   end
 
+  @doc """
+  Get a challenge based on an ObjectID
+
+  ## Parameters
+    - binary | map: The ObjectID value, or the map of attributes
+  """
   @spec get_challenge(binary) :: {:ok, Challenge.t()}
   def get_challenge(id) when is_binary(id) do
     Logger.debug("Getting challenge by ID:" <> id)
@@ -51,9 +60,14 @@ defmodule ChallengeGenerator.Challenges.Challenge do
     {:ok, challenge}
   end
 
+  @doc """
+  Get a random challenge based on a map of attributes
+  ## Parameters
+    - map: The map of attributes based on ChallengeAttrsQuery struct
+  """
   @spec get_random_challenge(map) :: {:ok, Challenge.t()}
   def get_random_challenge(attrs \\ %{}) do
-    Logger.debug("Getting random challenge by attrs")
+    Logger.debug("Getting random challenge by attrs:" <> inspect(attrs))
 
     match_map =
       ChallengeAttrsQuery.create_query_from_map(attrs)

@@ -1,4 +1,8 @@
 defmodule ChallengeGenerator.Challenges.ChallengeAttrsQuery do
+  @moduledoc """
+  The `ChallengeAttrsQuery` module provides a consistent struct for creating the
+  map attributes for the aggregation query in Mongo
+  """
   alias ChallengeGenerator.Challenges.ChallengeAttrsQuery
 
   @type t :: %ChallengeAttrsQuery{
@@ -64,6 +68,11 @@ defmodule ChallengeGenerator.Challenges.ChallengeAttrsQuery do
     end
   end
 
+  @doc """
+  This creates the main struct based on a map
+  ## Parameters
+    - map: the map to create the struct from
+  """
   @spec create_query_from_map(map) :: ChallengeAttrsQuery.t()
   def create_query_from_map(attrs_map) do
     %ChallengeAttrsQuery{
@@ -78,6 +87,11 @@ defmodule ChallengeGenerator.Challenges.ChallengeAttrsQuery do
     }
   end
 
+  @doc """
+  This creates a map from the main struct, discarding the nil values
+  ## Parameters
+    - challenge_attrs: The `ChallengeAttrsQuery` struct to create the map from
+  """
   @spec create_match_map(ChallengeAttrsQuery.t()) :: map
   def create_match_map(challenge_attrs) do
     challenge_attrs

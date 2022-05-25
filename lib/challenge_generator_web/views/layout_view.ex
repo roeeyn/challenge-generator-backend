@@ -1,4 +1,5 @@
 defmodule ChallengeGeneratorWeb.LayoutView do
+  @moduledoc false
   use ChallengeGeneratorWeb, :view
 
   # Phoenix LiveDashboard is available only in development by default,

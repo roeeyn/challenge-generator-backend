@@ -1,4 +1,5 @@
 defmodule ChallengeGeneratorWeb.PageController do
+  @moduledoc false
   use ChallengeGeneratorWeb, :controller
 
   def index(conn, _params) do

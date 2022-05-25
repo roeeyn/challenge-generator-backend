@@ -1,4 +1,5 @@
 defmodule ChallengeGeneratorWeb.ChangesetView do
+  @moduledoc false
   use ChallengeGeneratorWeb, :view
 
   @doc """
