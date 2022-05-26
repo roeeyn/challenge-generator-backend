@@ -1,0 +1,241 @@
+{
+  "consumes": [
+    "application/json"
+  ],
+  "definitions": {
+    "Challenge": {
+      "description": "A challenge in our application",
+      "properties": {
+        "_id": {
+          "description": "Database ID",
+          "example": "62897f53029d36f47fdaf632",
+          "type": "string"
+        },
+        "author": {
+          "description": "Challenge Author",
+          "example": "rubens",
+          "type": "string"
+        },
+        "author_edabit_id": {
+          "description": "Author ID",
+          "example": "XhzKztoQYYQzZ2c7o",
+          "type": "string"
+        },
+        "difficulty": {
+          "description": "Challenge Difficulty between 0 and 5",
+          "example": 2.5,
+          "type": "number"
+        },
+        "edabit_challenge_id": {
+          "description": "Challenge ID",
+          "example": "6vSZmN66xhMRDX8YT",
+          "type": "string"
+        },
+        "programming_language": {
+          "description": "Programming Language between python3, java and javascript",
+          "example": "python3",
+          "type": "string"
+        },
+        "quality": {
+          "description": "Challenge Quality from 0 to 5",
+          "example": 4.2,
+          "type": "number"
+        },
+        "raw_code": {
+          "description": "Raw Challenge Code",
+          "type": "string"
+        },
+        "raw_instructions": {
+          "description": "Challenge Instructions",
+          "type": "string"
+        },
+        "raw_tests": {
+          "description": "Challenge Raw Tests",
+          "type": "string"
+        },
+        "summary": {
+          "description": "Challenge Summary",
+          "type": "number"
+        },
+        "tags": {
+          "description": "Challenge tags",
+          "example": [
+            "math",
+            "algorithms"
+          ],
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "title": {
+          "description": "Challenge Title",
+          "example": "Recursion: Length of a String",
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "tags",
+        "summary",
+        "quality",
+        "programming_language",
+        "raw_tests",
+        "raw_instructions",
+        "difficulty",
+        "raw_code",
+        "author_edabit_id",
+        "author",
+        "edabit_challenge_id",
+        "_id"
+      ],
+      "title": "Challenge",
+      "type": "object"
+    }
+  },
+  "host": "localhost:4000",
+  "info": {
+    "contact": {
+      "email": "rodrigo.medina.neri@gmail.com",
+      "name": "Rodrigo Medina"
+    },
+    "description": "API Documentation for Challenge Generator",
+    "termsOfService": "Open for public",
+    "title": "Challenge Generator API",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/challenges": {
+      "get": {
+        "description": "Get a random challenge, based on the provided parameters",
+        "operationId": "ChallengeGeneratorWeb.ChallengeController.index",
+        "parameters": [
+          {
+            "description": "Challenge Title Regex",
+            "in": "query",
+            "name": "title",
+            "required": false,
+            "type": "string",
+            "x-example": "ort$"
+          },
+          {
+            "description": "Edabit Challenge ID",
+            "in": "query",
+            "name": "edabit_id",
+            "required": false,
+            "type": "string",
+            "x-example": "6vSZmN66xhMRDX8YT"
+          },
+          {
+            "description": "Challenge Author Regex",
+            "in": "query",
+            "name": "author",
+            "required": false,
+            "type": "string",
+            "x-example": "^M"
+          },
+          {
+            "description": "Author ID",
+            "in": "query",
+            "name": "author_edabit_id",
+            "required": false,
+            "type": "string",
+            "x-example": "XhzKztoQYYQzZ2c7o"
+          },
+          {
+            "description": "Min Challenge Difficulty from 0 to 5",
+            "in": "query",
+            "name": "min_difficulty",
+            "required": false,
+            "type": "number",
+            "x-example": 2.5
+          },
+          {
+            "description": "Programming Language between python3, java and javascript",
+            "in": "query",
+            "name": "programming_language",
+            "required": false,
+            "type": "string",
+            "x-example": "python3"
+          },
+          {
+            "description": "Min Challenge Quality from 0 to 5",
+            "in": "query",
+            "name": "min_quality",
+            "required": false,
+            "type": "number",
+            "x-example": 4.2
+          },
+          {
+            "description": "Challenge tags to looks",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "tags",
+            "required": false,
+            "type": "array",
+            "x-example": [
+              "math",
+              "algorithms"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "schema": {
+              "$ref": "#/definitions/Challenge"
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Challenges"
+        ]
+      }
+    },
+    "/api/challenges/{id}": {
+      "get": {
+        "description": "Get a challenge by its ID",
+        "operationId": "ChallengeGeneratorWeb.ChallengeController.show",
+        "parameters": [
+          {
+            "description": "Challenge DB ID",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "x-example": "ort$"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "schema": {
+              "$ref": "#/definitions/Challenge"
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Challenges"
+        ]
+      }
+    }
+  },
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "swagger": "2.0",
+  "tags": [
+    {
+      "description": "Challenges resources",
+      "name": "Challenges"
+    }
+  ]
+}

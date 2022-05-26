@@ -30,10 +30,32 @@ defmodule ChallengeGeneratorWeb.Router do
     resources "/challenges", ChallengeController, except: [:new, :edit]
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", ChallengeGeneratorWeb do
-  #   pipe_through :api
-  # end
+  scope "/api/swagger" do
+    forward "/", PhoenixSwagger.Plug.SwaggerUI,
+      otp_app: :challenge_generator,
+      swagger_file: "swagger.json"
+  end
+
+  def swagger_info do
+    %{
+      schemes: ["http", "https"],
+      info: %{
+        version: "1.0",
+        title: "Challenge Generator API",
+        description: "API Documentation for Challenge Generator",
+        termsOfService: "Open for public",
+        contact: %{
+          name: "Rodrigo Medina",
+          email: "rodrigo.medina.neri@gmail.com"
+        }
+      },
+      consumes: ["application/json"],
+      produces: ["application/json"],
+      tags: [
+        %{name: "Challenges", description: "Challenges resources"}
+      ]
+    }
+  end
 
   # Enables LiveDashboard only for development
   #
