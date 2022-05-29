@@ -1,5 +1,9 @@
 # Challenge Generator Backend
 
+## Pending Features (TODOs)
+
+- Rate llimit the requests per IP
+
 ## Notes
 The idea is to have 3 endpoints:
 1. `/` as a landing page
