@@ -20,9 +20,10 @@ config :logger, level: :info
 # To get SSL working, you will need to add the `https` key
 # to the previous section and set your `:url` port to 443:
 #
-#     config :challenge_generator, ChallengeGeneratorWeb.Endpoint,
-#       ...,
-#       url: [host: "example.com", port: 443],
+config :challenge_generator, ChallengeGeneratorWeb.Endpoint,
+  url: [host: "challenge-generator-backend.herokuapp.com", port: 443, scheme: "https"],
+  force_ssl: [rewrite_on: [:x_forwarded_proto]]
+
 #       https: [
 #         ...,
 #         port: 443,
