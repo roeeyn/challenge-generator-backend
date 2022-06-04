@@ -15,7 +15,9 @@ defmodule ChallengeGenerator.MixProject do
       # Docs
       name: "Challenge Generator",
       source_url: "https://github.com/roeeyn/challenge-generator-backend",
+      homepage_url: "https://challenge-generator-backend.herokuapp.com/docs/api",
       docs: [
+        source_ref: "master",
         authors: ["roeeyn"],
         groups_for_modules: [
           "Lib Logic": [
@@ -26,7 +28,7 @@ defmodule ChallengeGenerator.MixProject do
           ],
           "Web Interface": [ChallengeGeneratorWeb]
         ],
-        nested_groups: [ChallengeGenerator, ChallengeGeneratorWeb],
+        nest_modules_by_prefix: [ChallengeGenerator, ChallengeGeneratorWeb],
         extras: ["README.md"]
       ]
     ]
