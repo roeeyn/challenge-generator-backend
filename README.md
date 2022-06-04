@@ -1,5 +1,11 @@
 # Challenge Generator Backend
 
+## Elixir Modules Documentation [Here](https://roeeyn.github.io/challenge-generator-backend)
+
+## Pending Features (TODOs)
+
+- Rate llimit the requests per IP
+
 ## Notes
 The idea is to have 3 endpoints:
 1. `/` as a landing page
