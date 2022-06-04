@@ -1,20 +1,17 @@
 # Challenge Generator Backend
 
-## Elixir Modules Documentation [Here](https://roeeyn.github.io/challenge-generator-backend)
+![Main Image](https://res.cloudinary.com/dmrgfufa4/image/upload/v1654361539/READMEs/challenge-generator-backend.png)
 
-## Pending Features (TODOs)
+See the live project [here](https://challenge-generator-backend.herokuapp.com/)
 
-- Rate llimit the requests per IP
-
-## Notes
-The idea is to have 3 endpoints:
+## Pages
+We have four main pages:
 1. `/` as a landing page
 2. `/docs` for Elixir documentation about the modules
-3. `/docs/api` for API documentation (maybe swagger?)
-4. `/api` for the API itself
+3. `/docs/api` for API documentation (Swagger documentation)
+4. `/api/challenges` for the API itself
 
-Difficulty from 0 to 5
-Programming languages: [java, javascript, python3]
+## Developing The Project
 
 To start your Phoenix server:
 
