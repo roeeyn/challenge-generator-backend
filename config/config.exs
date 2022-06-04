@@ -42,6 +42,18 @@ config :challenge_generator, :phoenix_swagger,
 
 config :phoenix_swagger, json_library: Jason
 
+# Tailwind CSS
+config :tailwind,
+  version: "3.0.24",
+  default: [
+    args: ~w(
+    --config=tailwind.config.js
+    --input=css/app.css
+    --output=../priv/static/assets/app.css
+  ),
+    cd: Path.expand("../assets", __DIR__)
+  ]
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"

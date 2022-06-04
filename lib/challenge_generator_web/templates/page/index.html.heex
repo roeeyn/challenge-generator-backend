@@ -1,41 +1,97 @@
-<section class="phx-hero">
-  <h1>Welcome to Phoenix!</h1>
-  <p>Peace of mind from prototype to production</p>
-</section>
-
-<section class="row">
-  <article class="column">
-    <h2>Resources</h2>
-    <ul>
-      <li>
-        <a href="https://hexdocs.pm/phoenix/overview.html">Guides &amp; Docs</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix">Source</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix/blob/v1.6/CHANGELOG.md">v1.6 Changelog</a>
-      </li>
-    </ul>
-  </article>
-  <article class="column">
-    <h2>Help</h2>
-    <ul>
-      <li>
-        <a href="https://elixirforum.com/c/phoenix-forum">Forum</a>
-      </li>
-      <li>
-        <a href="https://web.libera.chat/#elixir">#elixir on Libera Chat (IRC)</a>
-      </li>
-      <li>
-        <a href="https://twitter.com/elixirphoenix">Twitter @elixirphoenix</a>
-      </li>
-      <li>
-        <a href="https://elixir-slackin.herokuapp.com/">Elixir on Slack</a>
-      </li>
-      <li>
-        <a href="https://discord.gg/elixir">Elixir on Discord</a>
-      </li>
-    </ul>
-  </article>
-</section>
+<div class="flex-1 flex flex-col p-10">
+  <section class="flex-1 flex-col border-8 rounded-xl flex items-center py-20 border-blue-100 relative bg-blue-50/25 bg-blend-luminosity shadow-md">
+    <div class="absolute top-6 left-6 flex flex-row space-x-3">
+      <%= for _ <- 1..3 do %>
+        <div class="w-6 h-6 bg-blue-100 rounded-full"></div>
+      <% end %>
+    </div>
+    <div class="flex-1 flex flex-col justify-center">
+      <h1 class="text-8xl font-bold text-center">
+        <span class="text-blue-100">&lt;</span>Challenge Generator Backend
+        <span class="text-blue-100">/&gt;</span>
+      </h1>
+    </div>
+    <div class="flex-init py-6">
+      <h2 class="text-3xl flex-1">
+        Create coding challenges from an API
+      </h2>
+    </div>
+    <div class="flex-init py-6">
+      <a
+        class="rounded-full font-bold text-xl bg-blue-100 py-4 px-6 shadow-lg"
+        href="https://challenge-generator-backend.herokuapp.com/docs/api"
+        target="_blank"
+      >
+        Try it now
+      </a>
+    </div>
+  </section>
+  <section class="flex-initial h-1/4 flex flex-row space-x-8">
+    <div class="flex-1 bg-cyan-500/50 mt-6 rounded-lg flex flex-col p-6 shadow-md">
+      <div class="flex-1 flex flex-row items-center space-x-4">
+        <img
+          class="h-full max-h-10"
+          src={Routes.static_path(@conn, "/images/github.svg")}
+          alt="GitHub Logo"
+        />
+        <h2 class="font-bold">
+          Source Code
+        </h2>
+      </div>
+      <p class="flex-init my-6">
+        We used GitHub to host our source code.
+      </p>
+      <a
+        class="flex-init font-bold uppercase"
+        target="_blank"
+        href="https://github.com/roeeyn/challenge-generator-backend"
+      >
+        Take me there &gt;
+      </a>
+    </div>
+    <div class="flex-1 bg-indigo-500/50 mt-6 rounded-lg flex flex-col p-6 shadow-md">
+      <div class="flex-1 flex flex-row items-center space-x-4">
+        <img
+          class="h-full max-h-10"
+          src={Routes.static_path(@conn, "/images/elixir.svg")}
+          alt="Elixir Logo"
+        />
+        <h2 class="font-bold">
+          Project Modules Documentation
+        </h2>
+      </div>
+      <p class="flex-init my-6">
+        Here you will find the documentation for the project modules.
+      </p>
+      <a
+        class="flex-init font-bold uppercase"
+        target="_blank"
+        href="https://roeeyn.github.io/challenge-generator-backend"
+      >
+        Take me there &gt;
+      </a>
+    </div>
+    <div class="flex-1 bg-green-500/50 mt-6 rounded-lg flex flex-col p-6 shadow-md">
+      <div class="flex-1 flex flex-row items-center space-x-4">
+        <img
+          class="h-full max-h-10"
+          src={Routes.static_path(@conn, "/images/swagger.svg")}
+          alt="Swagger Logo"
+        />
+        <h2 class="font-bold">
+          API Documentation
+        </h2>
+      </div>
+      <p class="flex-init my-6">
+        We used Swagger to generate the API documentation and playground.
+      </p>
+      <a
+        class="flex-init font-bold uppercase"
+        target="_blank"
+        href="https://challenge-generator-backend.herokuapp.com/docs/api"
+      >
+        Take me there &gt;
+      </a>
+    </div>
+  </section>
+</div>

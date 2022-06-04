@@ -67,6 +67,7 @@ defmodule ChallengeGenerator.MixProject do
       {:mongodb_driver, "~> 0.9.0"},
       {:ex_doc, "~> 0.21", only: :dev, runtime: false},
       {:phoenix_swagger, "~> 0.8"},
+      {:tailwind, "~> 0.1", runtime: Mix.env() == :dev},
       {:ex_json_schema, "~> 0.5"}
     ]
   end
@@ -80,7 +81,7 @@ defmodule ChallengeGenerator.MixProject do
   defp aliases do
     [
       setup: ["deps.get"],
-      "assets.deploy": ["esbuild default --minify", "phx.digest"]
+      "assets.deploy": ["tailwind default --minify", "esbuild default --minify", "phx.digest"]
     ]
   end
 end
