@@ -1,5 +1,7 @@
 # Challenge Generator Backend
 
+## Elixir Modules Documentation [Here](https://roeeyn.github.io/challenge-generator-backend)
+
 ## Pending Features (TODOs)
 
 - Rate llimit the requests per IP
