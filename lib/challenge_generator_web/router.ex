@@ -20,7 +20,6 @@ defmodule ChallengeGeneratorWeb.Router do
 
     get "/", PageController, :index
     get "/docs", PageController, :docs
-    get "/docs/api", PageController, :docs_api
   end
 
   scope "/api", ChallengeGeneratorWeb do
@@ -30,7 +29,7 @@ defmodule ChallengeGeneratorWeb.Router do
     resources "/challenges", ChallengeController, except: [:new, :edit]
   end
 
-  scope "/api/swagger" do
+  scope "/docs/api" do
     forward "/", PhoenixSwagger.Plug.SwaggerUI,
       otp_app: :challenge_generator,
       swagger_file: "swagger.json"

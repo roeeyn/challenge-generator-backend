@@ -118,7 +118,7 @@ defmodule ChallengeGeneratorWeb.ChallengeController do
     - conn: Phoenix default connection
   """
   def redirect_to_docs(conn, _params) do
-    redirect(conn, to: Routes.page_path(conn, :docs_api))
+    redirect(conn, to: "/docs/api")
   end
 
   swagger_path :index do
