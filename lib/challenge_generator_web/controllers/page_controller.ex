@@ -7,6 +7,6 @@ defmodule ChallengeGeneratorWeb.PageController do
   end
 
   def docs(conn, _params) do
-    render(conn, "index.html")
+    redirect(conn, external: "https://roeeyn.github.io/challenge-generator-backend")
   end
 end
